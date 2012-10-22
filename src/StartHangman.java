@@ -1,3 +1,5 @@
+import java.util.Random;
+
 
 /** 
  * 
@@ -17,7 +19,11 @@ public class StartHangman {
 	
 	public void run()
 	{
-		HangmanControllerInterface hangController = new HangToughController();
+		HangmanControllerInterface hangController;
+		//randomly choose evil or normal game play mode
+		if(new Random().nextBoolean()){
+			hangController = new HangToughController();}
+		else{hangController = new HangmanController();}
 		hangController.startUserInterface();
 		hangController.startGame();
 		hangController.playRound();

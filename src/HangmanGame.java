@@ -2,7 +2,7 @@
 import java.util.*;
 
 /** 
- * 
+ * Stores and modifies the data associated with the hangman game.
  *  
  * @authors Philip Raath / Andrew Canastar collaboration
  * @version 10.20.12 
@@ -17,11 +17,19 @@ public class HangmanGame implements HangmanGameInterface
 	private int guessesLeft, numBlanks;
 	private Set<String> wordSet;
 	
-    public HangmanGame()
+    /**
+     * Default constructor
+     */
+	public HangmanGame()
     {
     }
 
-    public HangmanGame(String targetWord, int guessesLeft)
+    /**
+     * Constructs the state of a normal hangman game. 
+     * @param targetWord - String, the target word the user is guessing against
+     * @param guessesLeft - int, the number of guesses remaining
+     */
+	public HangmanGame(String targetWord, int guessesLeft)
     {
     	this.targetWord = targetWord;
     	this.viewList = new ArrayList<Character>(targetWord.length());
@@ -33,7 +41,12 @@ public class HangmanGame implements HangmanGameInterface
     	this.guessesLeft = guessesLeft;
     }
     
-    public HangmanGame(Set<String> wordSet, int guessesLeft)
+	/**
+     * Constructs the state of an evil hangman game. 
+     * @param wordSet - Set<String>, the set of words the user is guessing against
+     * @param guessesLeft - int, the number of guesses remaining
+     */
+	public HangmanGame(Set<String> wordSet, int guessesLeft)
     {
     	this.wordSet = wordSet;
     	Iterator<String> iterator = wordSet.iterator();
@@ -54,7 +67,11 @@ public class HangmanGame implements HangmanGameInterface
     	
     }
     
-    public HangmanGame(String targetWord) //for testing purposes
+    /**
+     * A Constructor used only in testing.
+     * @param targetWord
+     */
+	public HangmanGame(String targetWord) //for testing purposes
     {
     	this.targetWord = targetWord;
     	this.viewList = new ArrayList<Character>(targetWord.length());
@@ -65,7 +82,11 @@ public class HangmanGame implements HangmanGameInterface
     	}
     }
     
-    public HangmanGame(int guessesLeft) //for testing purposes
+    /**
+     * A setter method for guesses left. Only for testing purposes
+     * @param guessesLeft
+     */
+	public HangmanGame(int guessesLeft) //for testing purposes
     {
     	this.guessesLeft = guessesLeft;
     }
