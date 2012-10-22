@@ -179,9 +179,10 @@ public class HangmanTUI extends AbstractHangmanUI {
   /**
    * Displays an error message when validation of user input fails.
    */
-  public void invalidEntry( String errorMessage )
+  public String invalidEntry( String errorMessage )
   {
 	  System.out.println( errorMessage );
+	  return scanner.next();
   }
   
   

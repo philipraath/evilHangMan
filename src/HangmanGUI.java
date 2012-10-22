@@ -52,8 +52,7 @@ public class HangmanGUI extends AbstractHangmanUI {
   public char askGuess()  
   { 
 	  String response = JOptionPane.showInputDialog("Please enter a guess: ");
-	  char guess = response.charAt(0);
-	  return guess;
+	  return validateCharacter( Character.toLowerCase( response.charAt(0) ) );
   } 
     
   @Override
@@ -183,9 +182,10 @@ public class HangmanGUI extends AbstractHangmanUI {
   /**
    * Displays an error message when validation of user input fails.
    */
-  public void invalidEntry( String errorMessage )
+  public String invalidEntry( String errorMessage )
   {
-	  JOptionPane.showMessageDialog(null, errorMessage );
+	  String response = JOptionPane.showInputDialog(errorMessage);
+	  return response;
   }
   
 } 

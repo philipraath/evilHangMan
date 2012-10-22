@@ -118,6 +118,6 @@ import java.util.*;
     /**
      * Displays an error message when validation of user input fails.
      */
-    void invalidEntry( String message );
+    String invalidEntry( String message );
       
 } 

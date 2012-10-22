@@ -54,11 +54,10 @@ public abstract class AbstractHangmanUI implements HangmanUIInterface {
     { 
         while( userLength <= 0 || userLength > maxWordLength ) 
         { 
-            invalidEntry( "Invalid entry, please " + 
+            userLength = validateAnInt( invalidEntry( "Invalid entry, please " + 
                     "be sure to type an integer greater than 0 and" + 
                     " less than " + maxWordLength + " this time." +
-                    "\nTry again: "); 
-            userLength = validateAnInt( scanner.next() ); 
+                    "\nTry again: ") ); 
         } 
         return userLength;   
     } 
@@ -73,9 +72,9 @@ public abstract class AbstractHangmanUI implements HangmanUIInterface {
     	char testGuess = guess; 
     	while (!Character.isLetter(testGuess))
         {
-        	invalidEntry( "Please input a letter from a to z only." +
-        					"\nTry again: ");
-        	testGuess = Character.toLowerCase( scanner.next().charAt(0) );
+        	testGuess = Character.toLowerCase( invalidEntry( "Please input a " +
+    												"letter from a to z only." +
+        											"\nTry again: ").charAt(0) );
         }
         return testGuess; 
     } 
@@ -89,11 +88,10 @@ public abstract class AbstractHangmanUI implements HangmanUIInterface {
     { 
         while( totalGuesses <= 0 || totalGuesses > ALPHABET_LENGTH ) 
         { 
-            invalidEntry( "Invalid entry, please " + 
+            totalGuesses = validateAnInt( invalidEntry( "Invalid entry, please " + 
                     "be sure to type an integer greater than 0 and" + 
                     " less than " + ALPHABET_LENGTH + " this time." +
-                    "\nTry again: "); 
-            totalGuesses = validateAnInt( scanner.next() ); 
+                    "\nTry again: ") );
         } 
         return totalGuesses; 
     } 
@@ -191,8 +189,4 @@ public abstract class AbstractHangmanUI implements HangmanUIInterface {
      * @return  boolean true if user requests a new game; false otherwise 
      */
     public abstract boolean askNewGame();
-
-
-      
-  
 } 

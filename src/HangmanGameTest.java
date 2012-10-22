@@ -35,7 +35,7 @@ public class HangmanGameTest
     
     /**
      * Tests if checkGuess() returns true or false, fails if false.
-     */
+     *//*
     @Test
     public void validateGuessTest()
     {
@@ -58,7 +58,7 @@ public class HangmanGameTest
        }
         
         // test to verify that guess has not already been made
-    }
+    }*/
     
     /**
      * Tests if chooseWord() returns a null value, fails if so.

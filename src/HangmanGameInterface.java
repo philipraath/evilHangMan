@@ -11,8 +11,6 @@ import java.util.*;
 
 public interface HangmanGameInterface
 {
-    boolean validateGuess(char guess);
-    
     /**
      * Should be implemented as static
      * Selects a word from the current dictionary
@@ -106,7 +104,13 @@ public interface HangmanGameInterface
      * a word to be displayed to the user on losing.
      * @return Set<String> wordSet of remaining words.
      */
-    Set<String> getWordSet(); 
+    Set<String> getWordSet();
+
+    /**
+     * Calculates the number of blanks in the pattern.
+     * @return numBlanks - int the number of blanks remaining.
+     */
+    int calculateNumberOfBlanks(); 
     
     
 }

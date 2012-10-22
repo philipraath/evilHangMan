@@ -173,18 +173,15 @@ public class HangmanGame implements HangmanGameInterface
     public boolean checkCorrectGuess(char guess)
     {
     	boolean correct = false;
-    	if(validateGuess(guess))
-    	{
-    		if(targetWord.indexOf(guess)!=-1)
-    		{
-    			correct = true;
-    		}
-    		else
-    		{
-    			correct = false;
-    		}
-    	}
-		return correct;
+    	if(targetWord.indexOf(guess)!=-1)
+		{
+			correct = true;
+		}
+		else
+		{
+			correct = false;
+		}
+    	return correct;
     }
     
     /**
@@ -268,6 +265,16 @@ public class HangmanGame implements HangmanGameInterface
     @Override
     public int decrementBlanks()
     {
+    	return numBlanks--;
+    }
+    
+    /**
+     * Calculates the number of blanks in the pattern.
+     * @return numBlanks - int the number of blanks remaining.
+     */
+    @Override
+    public int calculateNumberOfBlanks()
+    {
     	int temp = 0;
     	for(Character character : targetWord.toCharArray())
     	{
@@ -302,5 +309,4 @@ public class HangmanGame implements HangmanGameInterface
     {
     	return viewList;
     }
-
 }

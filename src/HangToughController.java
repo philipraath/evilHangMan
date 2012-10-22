@@ -108,7 +108,7 @@ public class HangToughController implements HangmanControllerInterface
 		        if(hangGame.checkCorrectGuess(currentGuess)){ 
 		            userInterface.displayCorrectGuess(currentGuess); 
 		            hangGame.updateViewList(); 
-		            hangGame.decrementBlanks(); 
+		            hangGame.calculateNumberOfBlanks(); 
 		        } 
 		        else
 		        { 
