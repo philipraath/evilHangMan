@@ -7,7 +7,7 @@ import org.junit.Test;
 import java.lang.Boolean; 
   
 /** 
- * 
+ * Tests the methods of the hangman text user interface.
  *  
  * @authors Philip Raath / Andrew Canastar collaboration
  * @version 10.20.12 

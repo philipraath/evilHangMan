@@ -91,12 +91,20 @@ public class HangmanGame implements HangmanGameInterface
     	this.guessesLeft = guessesLeft;
     }
     
-    public void setTargetWord(String pattern)
+    /**
+     * A setter method to update the target word as the game progresses in evil hangman.
+     * @param pattern - String, the current pattern used by the game.
+     */
+	public void setTargetWord(String pattern)
     {
     	this.targetWord = pattern;
     }
     
-    public void setWordSet(Set<String> currentWordSet)
+    /**
+     * A setter method to update the valid word list as the game progresses in evil hangman.
+     * @param currentWordSet - Set<String> the current wordSet used by the game
+     */
+	public void setWordSet(Set<String> currentWordSet)
     {
     	this.wordSet = currentWordSet;
     }
@@ -112,11 +120,19 @@ public class HangmanGame implements HangmanGameInterface
     	return wordSet;
     }
     
+    /**
+     * Returns the number of remaining guesses.
+     * @return int - the number of guesses remaining.
+     */
     public int getGuessesLeft()
     {
     	return this.guessesLeft;
     }
     
+    /**
+     * Sets the current pattern and set of words for the current iteration of the game.
+     * @param char - currentGuess, the user's last guess
+     */
     public void assignPatternMap(char currentGuess)
     {
     	Map<String, Set<String>> currentPattern = dictionary.newSortedSet(targetWord, currentGuess, wordSet);
@@ -130,22 +146,10 @@ public class HangmanGame implements HangmanGameInterface
     	setWordSet(returnedSet);
     }
     
-    @Override
-    public boolean validateGuess(char guess) throws IllegalArgumentException
-    {
-    	
-    	boolean isValidChar = false; 
-    	if(Character.isLetter(guess))
-        {
-        	isValidChar = true;
-        }
-        else 
-        {
-        	throw new IllegalArgumentException("Please enter a letter.");
-        }
-    return isValidChar;  
-    }
-    
+    /**
+     * Checks whether the guess is already found in the list of guesses.
+     * @return alreadyGuessed - boolean true if the Set of guesses contains the current guess.
+     */          
     public boolean checkAlreadyGuessed(char guess)
     {
     	boolean alreadyGuessed = false;
@@ -161,9 +165,13 @@ public class HangmanGame implements HangmanGameInterface
     	return alreadyGuessed;
     }
     
+    /**
+     * Checks whether the guess is found in the target word or pattern.
+     * @param char - the current guess
+     * @return correct - boolean true if the char is found in the target pattern.
+     */
     public boolean checkCorrectGuess(char guess)
     {
-//    	System.out.println("current char = " + guess);
     	boolean correct = false;
     	if(validateGuess(guess))
     	{
@@ -180,7 +188,9 @@ public class HangmanGame implements HangmanGameInterface
     }
     
     /**
-     * Should be implemented as static
+     * Selects a word from the current list of valid words to be used.
+     * @param int - the length of the word.
+     * @return String - the word obtained from the dictionary.
      */
     @Override
     public String chooseWord( int numLetters )
@@ -189,6 +199,11 @@ public class HangmanGame implements HangmanGameInterface
 
     }
     
+    /**
+     * Adds the latest guess to the list of guesses.
+     * @param char - the current user guess.
+     * @return guessList - Set<Character> of all the guesses.
+     */
     @Override
     public Set<Character> updateGuessList( char letter )
     {
@@ -196,12 +211,21 @@ public class HangmanGame implements HangmanGameInterface
     	return guessList;
     }
     
+    /**
+     * Reduces the number of guesses left by 1 and returns this value
+     * @return guessesLeft - int number of guesses left.
+     */
     @Override
     public int decrementGuessLimit()
     {
     	return --guessesLeft;
     }
     
+    /**
+     * Modifies the pattern of '-' and letters to be displayed to the user. Used
+     * in the evil version of hangman.
+     * @return viewList - List<Character> of chars.
+     */
     public List<Character> updateViewList()
     {
     	int targetLength = targetWord.length();
@@ -217,6 +241,13 @@ public class HangmanGame implements HangmanGameInterface
     	}
     	return viewList;
     }
+    
+    /**
+     * Modifies the pattern of '-' and letters to be displayed to the user. Used
+     * in the normal version of hangman.
+     * @param char - the char added to be used to modify the viewList.
+     * @return viewList - List<Character> of chars.
+     */
     public List<Character> updateViewList(char input)
     {
     	
@@ -230,6 +261,10 @@ public class HangmanGame implements HangmanGameInterface
     	return viewList;
     }
     
+    /**
+     * Decreases the number of blanks in the pattern.
+     * @return numBlanks - int the number of blanks remaining.
+     */
     @Override
     public int decrementBlanks()
     {
@@ -241,16 +276,28 @@ public class HangmanGame implements HangmanGameInterface
     	return numBlanks=temp;
     }
     
+    /**
+     * Returns the number of '-' left in the pattern.
+     * @return numBlanks - int the number of blanks left.
+     */
     public int getNumBlanks()
     {
     	return numBlanks;
     }
     
+    /**
+     * Returns the guessList.
+     * @return guessList - the Set of guesses made by the user.
+     */
     public Set<Character> getGuessList()
     {
     	return guessList;
     }
     
+    /**
+     * Returns the pattern or viewList for display.
+     * @return viewList - the pattern of remaining '-' and letters remaining in the target word.
+     */
     public List<Character> getViewList()
     {
     	return viewList;

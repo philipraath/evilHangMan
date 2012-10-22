@@ -2,7 +2,8 @@
 import java.util.*;
 
 /** 
- * 
+ * Defines the methods to be implemented in the Hangman game so that 
+ * the progressive game states can be recorded and changed.
  *  
  * @authors Philip Raath / Andrew Canastar collaboration
  * @version 10.20.12 
@@ -106,5 +107,6 @@ public interface HangmanGameInterface
      * @return Set<String> wordSet of remaining words.
      */
     Set<String> getWordSet(); 
+    
     
 }

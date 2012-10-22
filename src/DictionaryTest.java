@@ -11,7 +11,7 @@ import org.junit.Before;
 import org.junit.Test; 
 
 /** 
- * 
+ * Various tests of the methods contained in the dictionary class.
  *  
  * @authors Philip Raath / Andrew Canastar collaboration
  * @version 10.20.12 

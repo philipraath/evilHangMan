@@ -2,15 +2,13 @@ import java.util.Random;
 
 
 /** 
- * 
+ * Starts the hangman game. Allows the user to choose between a test or 
+ * graphical interface. Randomly chooses between normal and evil hangman.
  *  
  * @authors Philip Raath / Andrew Canastar collaboration
  * @version 10.20.12 
  */
 
-// always check length of word choice, it may not exist
-// change dictionary interface to return set of words
-// 
 public class StartHangman {
 	/**
 	 * @param args

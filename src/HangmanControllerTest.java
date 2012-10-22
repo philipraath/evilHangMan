@@ -1,11 +1,12 @@
 
 import static org.junit.Assert.*;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 /** 
- * 
+ * Tests the functions of the hangman controller.
  *  
  * @authors Philip Raath / Andrew Canastar collaboration
  * @version 10.20.12 
@@ -53,4 +54,12 @@ public class HangmanControllerTest
         assertEquals( 5, hangController.getWord( 5 ).length() );
         // could also return a word and make sure that it exists in dictionary
     }    
+    
+    @Test
+    public void chooseUIMode()
+    {
+    	HangToughController hangController = new HangToughController();
+    	
+    	assertTrue(hangController.chooseUIMode());
+    }
 }

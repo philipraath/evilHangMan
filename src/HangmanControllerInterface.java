@@ -46,5 +46,8 @@ public interface HangmanControllerInterface
 	 * @param wordLength - length of valid words for the game.
 	 * @return Set<String> of words equal in length to wordLength.
 	 */
-    Set<String> getWordSet(int wordLength);    
+    Set<String> getWordSet(int wordLength);
+
+	boolean chooseUIMode();    
+  
 }

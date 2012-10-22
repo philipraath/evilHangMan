@@ -4,7 +4,8 @@ import java.util.Scanner;
 import java.util.Set; 
 
 /** 
- * 
+ * Text output to request information from the user and update the user on the
+ * state of the game.
  *  
  * @authors Philip Raath / Andrew Canastar collaboration
  * @version 10.20.12 
@@ -166,12 +167,18 @@ public class HangmanTUI extends AbstractHangmanUI {
   }
 
   @Override
+  /**
+   * Displays good-bye when the game is ended.
+   */
   public void displayGoodbyeMessage() 
   {
 	  System.out.println("Ok. Goodbye."); 		
   } 
   
   @Override
+  /**
+   * Displays an error message when validation of user input fails.
+   */
   public void invalidEntry( String errorMessage )
   {
 	  System.out.println( errorMessage );

@@ -190,7 +190,9 @@ public abstract class AbstractHangmanUI implements HangmanUIInterface {
      Ask user if they wish to play another game. 
      * @return  boolean true if user requests a new game; false otherwise 
      */
-    public abstract boolean askNewGame(); 
+    public abstract boolean askNewGame();
+
+
       
   
 } 

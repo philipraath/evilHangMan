@@ -2,7 +2,7 @@
 import java.util.*; 
 
 /** 
- * 
+ * Describes the methods to be implemented in the user interface.
  *  
  * @authors Philip Raath / Andrew Canastar collaboration
  * @version 10.20.12 
@@ -97,8 +97,7 @@ import java.util.*;
      Display loss message. 
      */
     void displayLossMessage(); 
-      
-      
+          
     /** 
      * Display previously guessed message 
      * @param previouslyGuessed char that has already been guessed 
@@ -111,8 +110,14 @@ import java.util.*;
      */
     boolean askNewGame(); 
     
+    /**
+     * Displays good-bye when the game is ended.
+     */
     void displayGoodbyeMessage();
     
+    /**
+     * Displays an error message when validation of user input fails.
+     */
     void invalidEntry( String message );
       
 } 

@@ -2,6 +2,8 @@
 import java.util.ArrayList; 
 import java.util.Set; 
 
+import javax.swing.JOptionPane;
+
 /** 
  * Integrates the various components of the hangman game: user interface, 
  * game data, and dictionary. Controls the progress of the game.
@@ -25,7 +27,15 @@ public class HangToughController implements HangmanControllerInterface
       
     public HangToughController() 
     { 
-    	this.userInterface = new HangmanGUI();
+    	if(chooseUIMode())
+    	{
+    		this.userInterface = new HangmanTUI();
+    	}
+    	else
+    	{
+    		this.userInterface = new HangmanGUI();
+    	}
+    	
     	this.userInterface.displayWelcome();
     	this.dictionary = new Dictionary( userInterface.askForDictionaryName() );  
     } 
@@ -143,4 +153,17 @@ public class HangToughController implements HangmanControllerInterface
             System.exit(0); 
         } 
     }
+    
+    @Override
+    public boolean chooseUIMode()
+    {
+  	  String question = "Would you like to use the graphical or command line version of the game?";
+  	  String[] options = {"Graphical", "Command Line"};
+  	  Boolean returnValue = false;
+  	  int response = JOptionPane.showOptionDialog(null, question, null, JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, null);
+  	  if(response == 0){returnValue = false;}
+  	  else {returnValue = true;}
+  	  return returnValue;
+    }
+
 }  

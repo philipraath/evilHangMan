@@ -5,7 +5,7 @@ import org.junit.Test;
 import java.util.*;
 
 /** 
- * 
+ * Tests the functions fo the hangman game.
  *  
  * @authors Philip Raath / Andrew Canastar collaboration
  * @version 10.20.12 
@@ -162,5 +162,7 @@ public class HangmanGameTest
         tempBlanks = newHang.decrementBlanks();
         assertEquals(1, numBlanks - tempBlanks);
     }
+    
+    
     
 }
