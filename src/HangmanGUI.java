@@ -173,6 +173,12 @@ public class HangmanGUI extends AbstractHangmanUI {
   public void displayGoodbyeMessage() {
 	  JOptionPane.showMessageDialog(null, "Goodbye!");
 	
-} 
+  } 
+  
+  @Override
+  public void invalidEntry( String errorMessage )
+  {
+	  JOptionPane.showMessageDialog(null, errorMessage );
+  }
   
 } 

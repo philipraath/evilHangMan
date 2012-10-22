@@ -13,7 +13,7 @@ import java.util.Set;
 import java.util.TreeSet;  
 
 /** 
- * 
+ * The Dictionary is used by different versions 
  *  
  * @authors Philip Raath / Andrew Canastar collaboration
  * @version 10.20.12 
@@ -145,6 +145,13 @@ public class Dictionary extends AbstractDictionary {
         }  
             
     }  
+    
+    /**
+     * Obtains a wordSet based on the word length supplied by the user.
+     * @param - wordLength - the length
+     * @return Set<String> - the valid word set.
+     * @throws IllegalArgumentException.
+     */
     @Override
     public Set<String> getWordSet(int wordLength) throws IllegalArgumentException   
     {  
@@ -168,6 +175,11 @@ public class Dictionary extends AbstractDictionary {
         }  
     }  
     
+    /**
+     * Randomly selects a word from the valid word list.
+     * @param validWordSet - Set<String> of valid words.
+     * @return String - the word chosen from the list.
+     */
     @Override
     public String selectWord(Set<String> validWordSet) {  
         int randomNumber = generateRandomNumber(validWordSet);  
@@ -175,6 +187,10 @@ public class Dictionary extends AbstractDictionary {
         return selectedWord;  
     }  
         
+    /**
+     * Returns the length of the longest word found in the dictionary.
+     * return int - the length of the longest word.
+     */
     @Override
     public int lengthLongestWord( Set<String> dictionary ) {  
         int maxWordLength = 0;  
@@ -188,12 +204,22 @@ public class Dictionary extends AbstractDictionary {
         return maxWordLength;  
     }  
         
+    /**
+     * Returns a random number based on the size of the current valid word set.
+     * @param validWordSet - to be used in obtaining a random number.
+     * @return randomNumber - the random value between 0 and the size of the list inclusive.
+     */
     public int generateRandomNumber(Set<String> validWordSet){  
         double randomNumberDouble = Math.random();  
         int randomNumber = (int) (randomNumberDouble * (validWordSet.size()-1));  
         return randomNumber;  
     }  
         
+    /**
+     * Setter for changing the Set<String> of words representing the valid dictionary.
+     * @param dictionary
+     */
+    @Override
     public void setDictionary(Set<String> dictionary){  
         this.dictionary = dictionary;  
     }  
@@ -202,6 +228,7 @@ public class Dictionary extends AbstractDictionary {
      * Getter for the complete set of words from the dictionary file. 
      * @return Set<String> the dictionary 
      */
+    @Override
     public Set<String> getDictionary(){  
         return dictionary;  
     }  
@@ -281,6 +308,14 @@ public class Dictionary extends AbstractDictionary {
         return patternTable;  
     }  
     
+    /**
+     * Adds a new <String, Set<String>> pair to a Map of the same type. Used
+     * to add novel patterns and the words that fit them to the patternTable.
+     * @param patternTable - the current list of patterns (the keys) and the Set<String> of
+     * pattern words.
+     * @param newKeyValuePair - Map<String, Set<String>> to add to the patternTable
+     * @return tempTable - the updated Map<S,S<S>> to be used for reassignment of the patternTable
+     */
     @Override
     public Map<String, Set<String>> addKeyValuePair(  
                                 Map<String, Set<String>> patternTable,  
@@ -291,7 +326,12 @@ public class Dictionary extends AbstractDictionary {
         return tempTable; 
     } 
   
-  
+    /**
+     * Finds the key with the Set<String> value that has the largest size(). If two keys
+     * have equal sized lists, then one is randomly chosen to be the longest.
+     * @param patternTable - the completed Map<String, Set<String>>.
+     * @return longestKey - String with the largest size Set<String>. 
+     */
     @Override
     public String findLongestListKey( 
             Map<String, Set<String>> patternTable) { 
@@ -313,6 +353,16 @@ public class Dictionary extends AbstractDictionary {
         return longestKey; 
     } 
       
+    /**
+     * Returns a new set of words to be used in the hangman game. Used in the evil version
+     * of hangman to set the valid words to be the list of words associated with the pattern
+     * that has the largest list.
+     * @param String - the currentPattern
+     * @param char - the guessed char from the last iteration of the game
+     * @param currentDictionary - Set<String> with the current list of valid words
+     * @return newDictionary - Map<String, Set<String>> with the updated pattern and the Set<String>
+     * is the new list of words.
+     */
     @Override
     public Map<String, Set<String>> newSortedSet(String currentPattern,    
                                     char currentGuess,  

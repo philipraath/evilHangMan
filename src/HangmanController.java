@@ -3,7 +3,8 @@ import java.util.ArrayList;
 import java.util.Set; 
 
 /** 
- * 
+ * Integrates the various components of the hangman game: user interface, 
+ * game data, and dictionary. Controls the progress of the game.
  *  
  * @authors Philip Raath / Andrew Canastar collaboration
  * @version 10.20.12 
@@ -22,6 +23,9 @@ public class HangmanController implements HangmanControllerInterface
     private HangmanUIInterface userInterface; 
     private char currentGuess; 
       
+    /**
+     * Default constructor for the Hangman controller.
+     */
     public HangmanController() 
     { 
         this.userInterface = new HangmanGUI(); 
@@ -71,31 +75,31 @@ public class HangmanController implements HangmanControllerInterface
      */
     public void playRound() 
     { 
-        userInterface.displayCurrentState(hangGame.getGuessesLeft(), hangGame.getGuessList(), (ArrayList<Character>) hangGame.getViewList()); 
-//      hangGame.validateGuess(userInterface.askGuess()); 
-        currentGuess = userInterface.askGuess(); 
-        currentGuess = Character.toLowerCase(currentGuess); 
-        if(hangGame.checkAlreadyGuessed(currentGuess)) 
-        { 
-            userInterface.displayAlreadyGuess(currentGuess); 
-        } 
-        else if(hangGame.checkCorrectGuess(currentGuess)){ 
-            userInterface.displayCorrectGuess(currentGuess); 
-            hangGame.updateViewList(currentGuess); 
-            hangGame.decrementBlanks(); 
-        } 
-        else
-        { 
-            userInterface.displayIncorrectGuess(currentGuess); 
-            hangGame.decrementGuessLimit(); 
-        } 
-        hangGame.updateGuessList(currentGuess); 
+        do
+        {
+        	userInterface.displayCurrentState(hangGame.getGuessesLeft(), hangGame.getGuessList(), (ArrayList<Character>) hangGame.getViewList());  
+       
+	        currentGuess = userInterface.askGuess(); 
+	        currentGuess = Character.toLowerCase(currentGuess); 
+	        if(hangGame.checkAlreadyGuessed(currentGuess)) 
+	        { 
+	            userInterface.displayAlreadyGuess(currentGuess); 
+	        } 
+	        else if(hangGame.checkCorrectGuess(currentGuess)){ 
+	            userInterface.displayCorrectGuess(currentGuess); 
+	            hangGame.updateViewList(currentGuess); 
+	            hangGame.decrementBlanks(); 
+	        } 
+	        else
+	        { 
+	            userInterface.displayIncorrectGuess(currentGuess); 
+	            hangGame.decrementGuessLimit(); 
+	        } 
+	        hangGame.updateGuessList(currentGuess); 
           
-        if(hangGame.getGuessesLeft()!=0 && hangGame.getNumBlanks()!=0) 
-        { 
-            playRound(); 
-        } 
-        else if(hangGame.getGuessesLeft()==0 && hangGame.getNumBlanks()!=0) 
+        } while(hangGame.getGuessesLeft()!=0 && hangGame.getNumBlanks()!=0); 
+         
+        if(hangGame.getGuessesLeft()==0 && hangGame.getNumBlanks()!=0) 
         { 
             userInterface.displayLossMessage(); 
             userInterface.displayAnswer(word); 
@@ -129,14 +133,15 @@ public class HangmanController implements HangmanControllerInterface
         } 
     }
 
-	@Override
+    @Override
+	/** 
+     * Obtains a set of words of the correct length from a Dictionary. 
+     *  
+     * @param int wordLength 
+     * @return Set<String> 
+     */
 	public Set<String> getWordSet(int wordLength) {
-		// TODO Auto-generated method stub
-		return null;
+		Set<String> wordSet = dictionary.getWordSet(wordLength);
+		return wordSet;
 	} 
-      
-      
-      
-      
-  
 } 

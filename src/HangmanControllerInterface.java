@@ -2,7 +2,7 @@
 import java.util.Set;
 
 /** 
- * 
+ * Defines the methods required of the hangman controller.
  *  
  * @authors Philip Raath / Andrew Canastar collaboration
  * @version 10.20.12 
@@ -46,16 +46,5 @@ public interface HangmanControllerInterface
 	 * @param wordLength - length of valid words for the game.
 	 * @return Set<String> of words equal in length to wordLength.
 	 */
-    Set<String> getWordSet(int wordLength);
-
-	/**
-	 * In a game of hangTough, returns a random word from the
-	 * remaining wordSet to be given as the target word to the user.
-	 * @param wordSet - Set<String> of words
-	 * @return String word
-	 *//*
-	String getWord(Set<String> wordSet);*/
-
-    
-    
+    Set<String> getWordSet(int wordLength);    
 }

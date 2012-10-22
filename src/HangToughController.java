@@ -3,8 +3,9 @@ import java.util.ArrayList;
 import java.util.Set; 
 
 /** 
- * 
- *  
+ * Integrates the various components of the hangman game: user interface, 
+ * game data, and dictionary. Controls the progress of the game.
+ *   
  * @authors Philip Raath / Andrew Canastar collaboration
  * @version 10.20.12 
  */
@@ -142,11 +143,4 @@ public class HangToughController implements HangmanControllerInterface
             System.exit(0); 
         } 
     }
-
-
-      
-      
-      
-      
-  
 }  

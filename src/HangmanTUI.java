@@ -48,7 +48,7 @@ public class HangmanTUI extends AbstractHangmanUI {
   public char askGuess()  
   { 
       System.out.println("Please enter a guess: "); 
-      return Character.toLowerCase( scanner.next().charAt(0) ); 
+      return validateCharacter( Character.toLowerCase( scanner.next().charAt(0) ) ); 
   } 
     
   @Override
@@ -170,6 +170,12 @@ public class HangmanTUI extends AbstractHangmanUI {
   {
 	  System.out.println("Ok. Goodbye."); 		
   } 
+  
+  @Override
+  public void invalidEntry( String errorMessage )
+  {
+	  System.out.println( errorMessage );
+  }
   
   
 } 

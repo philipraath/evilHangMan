@@ -17,8 +17,6 @@ import java.util.Set;
   
 public abstract class AbstractHangmanUI implements HangmanUIInterface { 
   
-    // private final char LOWEST_LEGIT_CHAR = 'a'; 
-    // private final char HIGHEST_LEGIT_CHAR = 'z'; 
     private final int ALPHABET_LENGTH = 26; 
       
     private static Scanner scanner = new Scanner(System.in); 
@@ -56,24 +54,30 @@ public abstract class AbstractHangmanUI implements HangmanUIInterface {
     { 
         while( userLength <= 0 || userLength > maxWordLength ) 
         { 
-            System.out.print( "Invalid entry, please " + 
+            invalidEntry( "Invalid entry, please " + 
                     "be sure to type an integer greater than 0 and" + 
-                    " less than " + maxWordLength + " this time."); 
-            System.out.print( "\nTry again: " ); 
+                    " less than " + maxWordLength + " this time." +
+                    "\nTry again: "); 
             userLength = validateAnInt( scanner.next() ); 
         } 
         return userLength;   
     } 
       
     /** 
-     * Returns true if a user-specified char is within the range specified by LOWEST_LEGIT_CHAR 
-     * and HIGHEST_LEGIT_CHAR. 
-     * @param Character - the char to be validated 
-     * @return true if the char is within the specified range of chars 
+     * Returns true if a user-specified char is a letter.
+     * @param guess - the char to be validated 
+     * @return char - in the range from a to z
      */
-    public boolean validateCharacter( char Character ) 
+    public char validateCharacter( char guess ) 
     { 
-        return false; 
+    	char testGuess = guess; 
+    	while (!Character.isLetter(testGuess))
+        {
+        	invalidEntry( "Please input a letter from a to z only." +
+        					"\nTry again: ");
+        	testGuess = Character.toLowerCase( scanner.next().charAt(0) );
+        }
+        return testGuess; 
     } 
       
     /** 
@@ -85,10 +89,10 @@ public abstract class AbstractHangmanUI implements HangmanUIInterface {
     { 
         while( totalGuesses <= 0 || totalGuesses > ALPHABET_LENGTH ) 
         { 
-            System.out.print( "Invalid entry, please " + 
+            invalidEntry( "Invalid entry, please " + 
                     "be sure to type an integer greater than 0 and" + 
-                    " less than " + ALPHABET_LENGTH + " this time."); 
-            System.out.print( "\nTry again: " ); 
+                    " less than " + ALPHABET_LENGTH + " this time." +
+                    "\nTry again: "); 
             totalGuesses = validateAnInt( scanner.next() ); 
         } 
         return totalGuesses; 
@@ -105,12 +109,13 @@ public abstract class AbstractHangmanUI implements HangmanUIInterface {
         char testResponse = Character.toLowerCase(yesNo.charAt(0)); 
         while(testResponse!='y' && testResponse!='n') 
         { 
-            System.out.println("Please restrict your response to 'y' for yes or 'n' for no!"); 
-            System.out.println("please try again: "); 
+            invalidEntry("Please restrict your response to 'y' for yes or 'n' for no!\n" + 
+            				"please try again: "); 
             testResponse = Character.toLowerCase(scanner.next().charAt(0)); 
         } 
         return testResponse;  
-    } 
+    }
+    
     /** 
      * Displays welcome message. 
      */
